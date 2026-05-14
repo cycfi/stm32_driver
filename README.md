@@ -26,17 +26,39 @@ The board project sets the target MCU family before adding the library:
 
 ```cmake
 set(STM32_MCU STM32F4)
-add_compile_definitions(STM32F4 STM32F446xx)
+add_compile_definitions(
+   STM32F4
+   STM32F446xx
+   INFINITY_HAS_TIMER3
+   INFINITY_HAS_SPIA
+)
 
 add_subdirectory(path/to/stm32_driver stm32_driver)
 target_link_libraries(app_target stm32_driver)
 ```
 
-Projects that use the default DAC helpers must also expose the generated DAC
-handle name:
+Optional peripheral hooks are exposed only when the board project opts in with
+an `INFINITY_HAS_*` macro. Supported gates include:
+
+- `INFINITY_HAS_ADC`
+- `INFINITY_HAS_ADC1`
+- `INFINITY_HAS_ADC2`
+- `INFINITY_HAS_DAC`
+- `INFINITY_HAS_SPIA`
+- `INFINITY_HAS_TIMER2`
+- `INFINITY_HAS_TIMER3`
+- `INFINITY_HAS_USB_CDC`
+- `INFINITY_HAS_GPIO_INTERRUPT`
+
+Projects that enable `INFINITY_HAS_DAC` must also expose the generated DAC
+handle name. This keeps the shared driver from guessing CubeMX handle names such
+as `hdac` or `hdac1`:
 
 ```cmake
-add_compile_definitions(INFINITY_DAC_HANDLE=hdac)
+add_compile_definitions(
+   INFINITY_HAS_DAC
+   INFINITY_DAC_HANDLE=hdac
+)
 ```
 
 The generated `main.c` includes the driver hooks and calls into the application:

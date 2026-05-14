@@ -35,6 +35,8 @@ constexpr auto adc2_buffer_size = adc2_num_samples * adc2_num_channels;
 constexpr auto adc2_resolution = INFINITY_ADC2_RESOLUTION;
 #endif
 
+#if defined(INFINITY_DAC_RESOLUTION)
 constexpr auto dac_resolution = INFINITY_DAC_RESOLUTION;
+#endif
 
 #endif
