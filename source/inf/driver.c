@@ -38,26 +38,26 @@ void timer3_interrupt() {}
 // ADC callbacks
 #if defined(INFINITY_HAS_ADC)
 __attribute__((weak))
-void adc_in_half(uint16_t* samples, size_t size) {}
+void adc_in_half(volatile uint16_t* samples, size_t size) {}
 
 __attribute__((weak))
-void adc_in_full(uint16_t* samples, size_t size) {}
+void adc_in_full(volatile uint16_t* samples, size_t size) {}
 #endif
 
 #if defined(INFINITY_HAS_ADC1)
 __attribute__((weak))
-void adc1_in_half(uint16_t* samples, size_t size) {}
+void adc1_in_half(volatile uint16_t* samples, size_t size) {}
 
 __attribute__((weak))
-void adc1_in_full(uint16_t* samples, size_t size) {}
+void adc1_in_full(volatile uint16_t* samples, size_t size) {}
 #endif
 
 #if defined(INFINITY_HAS_ADC2)
 __attribute__((weak))
-void adc2_in_half(uint16_t* samples, size_t size) {}
+void adc2_in_half(volatile uint16_t* samples, size_t size) {}
 
 __attribute__((weak))
-void adc2_in_full(uint16_t* samples, size_t size) {}
+void adc2_in_full(volatile uint16_t* samples, size_t size) {}
 #endif
 
 // SPI functions

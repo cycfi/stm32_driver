@@ -48,18 +48,18 @@ void dac2_out(uint16_t sample);
 
 // ADC callbacks
 #if defined(INFINITY_HAS_ADC)
-void adc_in_half(uint16_t* samples, size_t size);
-void adc_in_full(uint16_t* samples, size_t size);
+void adc_in_half(volatile uint16_t* samples, size_t size);
+void adc_in_full(volatile uint16_t* samples, size_t size);
 #endif
 
 #if defined(INFINITY_HAS_ADC1)
-void adc1_in_half(uint16_t* samples, size_t size);
-void adc1_in_full(uint16_t* samples, size_t size);
+void adc1_in_half(volatile uint16_t* samples, size_t size);
+void adc1_in_full(volatile uint16_t* samples, size_t size);
 #endif
 
 #if defined(INFINITY_HAS_ADC2)
-void adc2_in_half(uint16_t* samples, size_t size);
-void adc2_in_full(uint16_t* samples, size_t size);
+void adc2_in_half(volatile uint16_t* samples, size_t size);
+void adc2_in_full(volatile uint16_t* samples, size_t size);
 #endif
 
 // USB CDC transmit
