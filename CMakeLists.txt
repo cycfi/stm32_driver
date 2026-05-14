@@ -1,8 +1,8 @@
 ###############################################################################
-#  Copyright (c) 2016-2022 Joel de Guzman
+#  Copyright (c) 2016-2023 Joel de Guzman
 ###############################################################################
 project(stm32_driver C CXX ASM)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_C_STANDARD 11)
 
 message(STATUS "STM32 MCU: ${STM32_MCU}")

@@ -32,6 +32,13 @@ add_subdirectory(path/to/stm32_driver stm32_driver)
 target_link_libraries(app_target stm32_driver)
 ```
 
+Projects that use the default DAC helpers must also expose the generated DAC
+handle name:
+
+```cmake
+add_compile_definitions(INFINITY_DAC_HANDLE=hdac)
+```
+
 The generated `main.c` includes the driver hooks and calls into the application:
 
 ```c
