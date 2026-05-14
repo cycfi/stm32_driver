@@ -26,10 +26,19 @@ void adc_in_full(uint16_t* samples, size_t size) {}
 
 // SPI functions
 __attribute__((weak))
+void spia_transmit(uint8_t* data, uint16_t size) {}
+
+__attribute__((weak))
 void spia_transmit_complete() {}
 
 __attribute__((weak))
+void spia_receive(uint8_t* data, uint16_t size) {}
+
+__attribute__((weak))
 void spia_receive_complete() {}
+
+__attribute__((weak))
+void spia_transmit_receive(uint8_t* tx_data, uint8_t* rx_data, uint16_t size) {}
 
 __attribute__((weak))
 void spia_transmit_receive_complete() {}
