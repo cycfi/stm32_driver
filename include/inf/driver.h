@@ -83,6 +83,27 @@ void spia_transmit_receive(uint8_t* tx_data, uint8_t* rx_data, uint16_t size);
 void spia_transmit_receive_complete(); // Send receive callback
 #endif
 
+// I2C functions
+#if defined(INFINITY_HAS_I2C)
+// 7-bit address of the on-board I2C test slave (I2CB). The HAL APIs expect the
+// address left-aligned (addr << 1); the driver shifts it internally.
+#if !defined(INFINITY_I2C_SLAVE_ADDRESS)
+# define INFINITY_I2C_SLAVE_ADDRESS 0x52
+#endif
+
+// Master role is blocking; the address is 7-bit (the driver left-aligns it for
+// the HAL). Returns 0 (HAL_OK) on success, non-zero on NAK / bus error.
+int  i2c_master_transmit(uint16_t addr, uint8_t* data, uint16_t size);
+int  i2c_master_receive(uint16_t addr, uint8_t* data, uint16_t size);
+
+// Slave role is non-blocking (interrupt-driven). Arm a transfer, then the
+// matching *_complete callback fires when it finishes; re-arm from there.
+void i2c_slave_receive(uint8_t* data, uint16_t size);
+void i2c_slave_receive_complete();   // Receive callback
+void i2c_slave_transmit(uint8_t* data, uint16_t size);
+void i2c_slave_transmit_complete();  // Transmit callback
+#endif
+
 // GPIO Interrupt
 #if defined(INFINITY_HAS_GPIO_INTERRUPT)
 void gpio_interrupt(int pin);

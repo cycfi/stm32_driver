@@ -81,6 +81,27 @@ __attribute__((weak))
 void spia_transmit_receive_complete() {}
 #endif
 
+// I2C functions
+#if defined(INFINITY_HAS_I2C)
+__attribute__((weak))
+int i2c_master_transmit(uint16_t addr, uint8_t* data, uint16_t size) { return 0; }
+
+__attribute__((weak))
+int i2c_master_receive(uint16_t addr, uint8_t* data, uint16_t size) { return 0; }
+
+__attribute__((weak))
+void i2c_slave_receive(uint8_t* data, uint16_t size) {}
+
+__attribute__((weak))
+void i2c_slave_receive_complete() {}
+
+__attribute__((weak))
+void i2c_slave_transmit(uint8_t* data, uint16_t size) {}
+
+__attribute__((weak))
+void i2c_slave_transmit_complete() {}
+#endif
+
 // USB CDC transmit
 #if defined(INFINITY_HAS_USB_CDC)
 uint8_t CDC_Transmit_FS(uint8_t* buff, uint16_t len);
