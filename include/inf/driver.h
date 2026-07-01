@@ -50,6 +50,11 @@ void dac2_out(uint16_t sample);
 #if defined(INFINITY_HAS_ADC)
 void adc_in_half(volatile uint16_t* samples, size_t size);
 void adc_in_full(volatile uint16_t* samples, size_t size);
+// Board multi-ADC input hooks (adc.c): one hook per extra ADC, called for both
+// the half and full DMA transfer. The application overrides these (strong); its
+// C linkage is inherited from here, so no `extern "C"` is written in app code.
+void adc2_in(volatile uint16_t* samples, size_t size);
+void adc3_in(volatile uint16_t* samples, size_t size);
 #endif
 
 #if defined(INFINITY_HAS_ADC1)

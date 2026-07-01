@@ -9,20 +9,7 @@
 #include <type_traits>
 #include <cstdint>
 #include <cstring>
-
-#if defined(STM32H7)
-# include <system_stm32h7xx.h>
-# include <stm32h7xx_ll_utils.h>
-# include <stm32h7xx_hal.h>
-#elif defined(STM32F4)
-# include <system_stm32f4xx.h>
-# include <stm32f4xx_ll_utils.h>
-# include <stm32f4xx_hal.h>
-#elif defined(STM32C0)
-# include <system_stm32c0xx.h>
-# include <stm32c0xx_ll_utils.h>
-# include <stm32c0xx_hal.h>
-#endif
+#include <inf/clock.hpp>     // millis / delay_ms / clock_speed (no HAL here)
 
 namespace cycfi { namespace infinity
 {
@@ -67,27 +54,6 @@ namespace cycfi { namespace infinity
    {
       using type = T;
    };
-
-   ////////////////////////////////////////////////////////////////////////////
-   // The MCU clock speed
-   ////////////////////////////////////////////////////////////////////////////
-   uint32_t const clock_speed = SystemCoreClock;
-
-   ////////////////////////////////////////////////////////////////////////////
-   // delay_ms function
-	////////////////////////////////////////////////////////////////////////////
-   inline void delay_ms(uint32_t ms)
-   {
-	   LL_mDelay(ms);
-   }
-
-   ////////////////////////////////////////////////////////////////////////////
-   // Returns the current system tick, configured as milliseconds.
-   ////////////////////////////////////////////////////////////////////////////
-   inline auto millis()
-   {
-	   return HAL_GetTick();
-   }
 
    ////////////////////////////////////////////////////////////////////////////
    // error_handler
