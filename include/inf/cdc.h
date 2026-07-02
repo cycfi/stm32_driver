@@ -20,8 +20,9 @@ extern "C" {
 uint8_t CDC_Transmit_HS(uint8_t* buf, uint16_t len);
 
 // Inbound hook: the USB ISR calls this with host-to-device bytes. Weak no-op
-// default in the middleware; the application overrides it (strong). Its C linkage
-// is inherited from this declaration, so no `extern "C"` is written in app code.
+// default in the middleware; the application overrides it (strong). Its C
+// linkage is inherited from this declaration, so no `extern "C"` is written in
+// app code.
 void eth_cdc_rx(const uint8_t* buf, uint32_t len);
 
 #ifdef __cplusplus

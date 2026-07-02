@@ -4,8 +4,9 @@
    Distributed under the MIT License [ https://opensource.org/licenses/MIT ]
 =============================================================================*/
 // C interface barrier for the multi-bus I2C master (blocking) + register-file
-// access + wedged-bus recovery. The application includes inf/i2c_master.hpp (the
-// C++ facade), not this header. Implementation currently in Core/Src/i2c.c.
+// access + wedged-bus recovery. The application includes inf/i2c_master.hpp
+// (the C++ facade), not this header. Implementation currently in
+// Core/Src/i2c.c.
 #if !defined(CYCFI_INFINITY_I2C_MASTER_H_JULY_1_2026)
 #define CYCFI_INFINITY_I2C_MASTER_H_JULY_1_2026
 
@@ -27,8 +28,8 @@ int  i2c_master_reg_read(unsigned bus, uint16_t addr, uint8_t reg,
 int  i2c_master_reg_write(unsigned bus, uint16_t addr, uint8_t reg,
                           uint8_t* data, uint16_t size);
 
-// Free a wedged bus (SDA held low) by clocking it out + a STOP, then re-init the
-// peripheral. For hot-plug recovery -- no MCU reset needed.
+// Free a wedged bus (SDA held low) by clocking it out + a STOP, then re-init
+// the peripheral. For hot-plug recovery -- no MCU reset needed.
 void i2c_master_bus_recover(unsigned bus);
 
 #ifdef __cplusplus

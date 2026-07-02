@@ -31,16 +31,17 @@ void eth_link_poll_rx(void);
 void eth_tx_timer_start(void);
 
 // --- inbound hooks (the application defines these; weak no-op default in the
-// transport). The application defines them as ordinary C++ functions -- their C
-// linkage is inherited from these declarations, so no `extern "C"` is written in
-// application code.
+// transport). The application defines them as ordinary C++ functions -- their
+// C linkage is inherited from these declarations, so no `extern "C"` is
+// written in application code.
 void eth_link_on_rx(const uint8_t* payload, uint16_t len);  // one per RX frame
 void eth_tx_tick(void);                                     // 50 kHz TX pacing
 
 // --- PHY status (100BASE-T1) -------------------------------------------------
 int      dp83tc817s_link_up(void);   // 1 up, 0 down, -1 no PHY
 int      dp83tc817s_sqi(void);       // 0 (worst)..7 (best), -1 no PHY
-uint16_t dp83tc817s_phyid1(void);    // PHYIDR1 (0x2000 = TI family, 0xFFFF none)
+// PHYIDR1 (0x2000 = TI family, 0xFFFF none)
+uint16_t dp83tc817s_phyid1(void);
 
 #ifdef __cplusplus
 }

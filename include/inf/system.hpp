@@ -6,9 +6,9 @@
 #if !defined(CYCFI_INFINITY_SYSTEM_HPP_JULY_1_2026)
 #define CYCFI_INFINITY_SYSTEM_HPP_JULY_1_2026
 
-// System-control facade. Declaration only -- no HAL/CMSIS here. The impl lives
-// in source/inf/system.cpp behind inf/detail/hal.hpp, so an application can call
-// inf::system_reset() without seeing the platform.
+// System-control facade. Declaration only -- no HAL/CMSIS here. The impl
+// lives in source/inf/system.cpp behind inf/detail/hal.hpp, so an application
+// can call inf::system_reset() without seeing the platform.
 
 namespace cycfi { namespace infinity
 {

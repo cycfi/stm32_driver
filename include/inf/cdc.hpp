@@ -9,9 +9,10 @@
 #include <inf/cdc.h>
 #include <cstdint>
 
-// C++ facade over the USB CDC host link. Outbound goes through inf::cdc::transmit;
-// inbound host bytes arrive via the eth_cdc_rx hook (declared in inf/cdc.h), which
-// the application defines as a plain C++ function.
+// C++ facade over the USB CDC host link. Outbound goes through
+// inf::cdc::transmit; inbound host bytes arrive via the eth_cdc_rx hook
+// (declared in inf/cdc.h), which the application defines as a plain C++
+// function.
 
 namespace cycfi { namespace infinity
 {
