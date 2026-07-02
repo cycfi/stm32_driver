@@ -64,7 +64,7 @@ add_compile_definitions(
 The generated `main.c` includes the driver hooks and calls into the application:
 
 ```c
-#include <inf/driver.h>
+#include <inf/detail/driver.h>
 
 setup();
 

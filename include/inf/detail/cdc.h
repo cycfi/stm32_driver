@@ -19,6 +19,12 @@ extern "C" {
 // success, non-zero if the IN endpoint is still busy with the previous buffer.
 uint8_t CDC_Transmit_HS(uint8_t* buf, uint16_t len);
 
+// Full-speed transmit wrapper (driver.c -> CDC_Transmit_FS); the HS entry
+// above is what inf::cdc uses. Present only on a board with USB CDC.
+#if defined(INFINITY_HAS_USB_CDC)
+uint8_t CDC_transmit(uint8_t* buff, uint16_t len);
+#endif
+
 // Inbound hook: the USB ISR calls this with host-to-device bytes. Weak no-op
 // default in the middleware; the application overrides it (strong). Its C
 // linkage is inherited from this declaration, so no `extern "C"` is written in

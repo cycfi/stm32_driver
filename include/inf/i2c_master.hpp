@@ -6,7 +6,7 @@
 #if !defined(CYCFI_INFINITY_I2C_MASTER_HPP_JULY_1_2026)
 #define CYCFI_INFINITY_I2C_MASTER_HPP_JULY_1_2026
 
-#include <inf/i2c_master.h>
+#include <inf/detail/i2c_master.h>
 #include <cstdint>
 
 // C++ facade over the multi-bus I2C master. bus is a small index (0 = I2CA,

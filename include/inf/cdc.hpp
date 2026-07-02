@@ -6,13 +6,12 @@
 #if !defined(CYCFI_INFINITY_CDC_HPP_JULY_1_2026)
 #define CYCFI_INFINITY_CDC_HPP_JULY_1_2026
 
-#include <inf/cdc.h>
+#include <inf/detail/cdc.h>
 #include <cstdint>
 
 // C++ facade over the USB CDC host link. Outbound goes through
-// inf::cdc::transmit; inbound host bytes arrive via the eth_cdc_rx hook
-// (declared in inf/cdc.h), which the application defines as a plain C++
-// function.
+// inf::cdc::transmit; inbound host bytes arrive via the eth_cdc_rx hook,
+// which the application defines as inf::hooks::eth_cdc_rx.
 
 namespace cycfi { namespace infinity
 {
@@ -26,5 +25,14 @@ namespace cycfi { namespace infinity
       }
    };
 }}
+
+// The inbound host-bytes hook (global C ABI). The app defines it (e.g.
+// `void eth_cdc_rx(...) { ... }`), overriding the weak no-op default. A copy
+// of the barrier declaration in inf/detail/cdc.h, surfaced here so the app
+// sees the hook contract from this facade.
+extern "C"
+{
+   void eth_cdc_rx(std::uint8_t const* buf, std::uint32_t len);
+}
 
 #endif

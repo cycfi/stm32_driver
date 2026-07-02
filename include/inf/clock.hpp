@@ -14,6 +14,12 @@
 
 namespace cycfi { namespace infinity
 {
+   // The MCU core clock (Hz) as a compile-time constant (from the board's
+   // INFINITY_SYS_CLOCK define).
+#if defined(INFINITY_SYS_CLOCK)
+   constexpr auto sys_clock = INFINITY_SYS_CLOCK;
+#endif
+
    // Milliseconds since boot (the HAL SysTick counter).
    std::uint32_t millis();
 

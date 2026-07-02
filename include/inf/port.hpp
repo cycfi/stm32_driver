@@ -187,4 +187,13 @@ namespace cycfi { namespace infinity
    };
 }}
 
+// The EXTI GPIO interrupt hook (global C ABI). The app defines
+// `void gpio_interrupt(int pin) { ... }`, overriding the weak no-op default.
+// A copy of the barrier declaration in inf/detail/gpio.h, surfaced here so
+// the app sees the hook contract from this facade (pin I/O and its interrupt
+// live together).
+#if defined(INFINITY_HAS_GPIO_INTERRUPT)
+extern "C" void gpio_interrupt(int pin);
+#endif
+
 #endif

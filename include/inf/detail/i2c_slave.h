@@ -28,6 +28,12 @@
 #define INFINITY_I2C_SLAVE_MAX_REGS 64
 #endif
 
+// This slave's own 7-bit bus address. The HAL APIs left-align it (addr << 1),
+// which the driver does internally. A board can override.
+#if !defined(INFINITY_I2C_SLAVE_ADDRESS)
+#define INFINITY_I2C_SLAVE_ADDRESS 0x52
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

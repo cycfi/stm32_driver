@@ -6,7 +6,7 @@
 #if !defined(CYCFI_INFINITY_I2C_SLAVE_HPP_JULY_2_2026)
 #define CYCFI_INFINITY_I2C_SLAVE_HPP_JULY_2_2026
 
-#include <inf/i2c_slave.h>
+#include <inf/detail/i2c_slave.h>
 #include <cstdint>
 
 // C++ facade over the I2C slave role: raw receive/transmit plus the
@@ -65,5 +65,16 @@ namespace cycfi { namespace infinity
       }
    };
 }}
+
+// The slave transfer-completion hooks (global C ABI). The app defines the
+// ones it needs (e.g. `void i2c_slave_receive_complete() { ... }`),
+// overriding the weak no-op default. A copy of the barrier declaration in
+// inf/detail/i2c_slave.h, surfaced here so the app sees the hook contract
+// from this facade.
+extern "C"
+{
+   void i2c_slave_receive_complete();
+   void i2c_slave_transmit_complete();
+}
 
 #endif

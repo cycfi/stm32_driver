@@ -3,7 +3,7 @@
 
    Distributed under the MIT License [ https://opensource.org/licenses/MIT ]
 =============================================================================*/
-#include <inf/driver.h>
+#include <inf/detail/driver.h>
 #include <stddef.h>
 
 #if defined(__has_include)
