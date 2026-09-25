@@ -21,7 +21,11 @@ namespace cycfi { namespace infinity
       // endpoint is still busy with the previous buffer.
       static std::uint8_t transmit(std::uint8_t* data, std::uint16_t len)
       {
+#if defined(INFINITY_HAS_USB_CDC)
+         return CDC_transmit(data, len);     // full-speed device
+#else
          return CDC_Transmit_HS(data, len);
+#endif
       }
    };
 }}
