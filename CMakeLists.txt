@@ -28,6 +28,7 @@ endif()
 set(STM32_INF_SOURCES
    ${CMAKE_CURRENT_SOURCE_DIR}/source/inf/driver.c
    ${CMAKE_CURRENT_SOURCE_DIR}/source/inf/clock.cpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/source/inf/flash.cpp
    ${CMAKE_CURRENT_SOURCE_DIR}/source/inf/system.cpp
 )
 
