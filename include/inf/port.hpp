@@ -185,6 +185,32 @@ namespace cycfi { namespace infinity
          return !state();
       }
    };
+
+   ////////////////////////////////////////////////////////////////////////////
+   // pin_mode: switch a pin at run time between analog (the ADC's mode,
+   // no pull) and a digital input with the weak pull-up or pull-down, for
+   // example to probe whether anything drives an analog input. The port
+   // and pin are the runtime counterparts of output_port's parameters.
+   // Read-modify-write of the port's MODER and PUPDR: call from one
+   // context only.
+   ////////////////////////////////////////////////////////////////////////////
+   namespace port
+   {
+      enum class mode { analog, pull_up, pull_down };
+
+      inline void pin_mode(std::size_t port, std::size_t pin, mode m)
+      {
+         constexpr auto stride = GPIOB_BASE - GPIOA_BASE;
+         auto& gpio = *reinterpret_cast<GPIO_TypeDef*>(
+            GPIOA_BASE + port * stride);
+         auto shift = pin * 2;
+         std::uint32_t moder = m == mode::analog ? 0x3 : 0x0;
+         std::uint32_t pupdr =
+            m == mode::pull_up ? 0x1 : m == mode::pull_down ? 0x2 : 0x0;
+         gpio.MODER = (gpio.MODER & ~(0x3u << shift)) | (moder << shift);
+         gpio.PUPDR = (gpio.PUPDR & ~(0x3u << shift)) | (pupdr << shift);
+      }
+   }
 }}
 
 // The EXTI GPIO interrupt hook (global C ABI). The app defines
