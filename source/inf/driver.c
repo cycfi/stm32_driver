@@ -110,6 +110,9 @@ uint8_t CDC_transmit(uint8_t* buff, uint16_t len)
 {
    return CDC_Transmit_FS(buff, len);
 }
+
+__attribute__((weak))
+void eth_cdc_rx(const uint8_t* buf, uint32_t len) {}
 #endif
 
 // DAC 1 and 2 out
