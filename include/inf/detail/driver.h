@@ -22,6 +22,7 @@
 #include <inf/detail/dac.h>           // dac1/2_out
 #include <inf/detail/spi.h>           // spia_* transfers + completion hooks
 #include <inf/detail/i2c_master.h>    // i2c_master_* (master + register access)
+#include <inf/detail/uart.h>          // uart_* (buffered serial transmit)
 #include <inf/detail/i2c_slave.h>     // i2c_slave_* (raw + register-file service)
 #include <inf/detail/cdc.h>           // USB CDC transmit + eth_cdc_rx hook
 #include <inf/detail/timer.h>         // timer2/3_interrupt hooks

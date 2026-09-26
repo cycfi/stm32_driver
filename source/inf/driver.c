@@ -102,6 +102,15 @@ __attribute__((weak))
 void i2c_slave_transmit_complete() {}
 #endif
 
+// Buffered serial transmit (the board's Core implements it)
+#if defined(INFINITY_HAS_UART)
+__attribute__((weak))
+int uart_write(unsigned port, const uint8_t* data, uint32_t size) { return 0; }
+
+__attribute__((weak))
+uint32_t uart_space(unsigned port) { return 0; }
+#endif
+
 // USB CDC transmit
 #if defined(INFINITY_HAS_USB_CDC)
 uint8_t CDC_Transmit_FS(uint8_t* buff, uint16_t len);
