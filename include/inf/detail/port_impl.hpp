@@ -27,6 +27,12 @@
 # include <stm32c0xx_ll_bus.h>
 # include <stm32c0xx_ll_system.h>
 # include <stm32c0xx_ll_exti.h>
+#elif defined(STM32G0)
+# include <stm32g0xx.h>
+# include <stm32g0xx_ll_gpio.h>
+# include <stm32g0xx_ll_bus.h>
+# include <stm32g0xx_ll_system.h>
+# include <stm32g0xx_ll_exti.h>
 #endif
 
 namespace cycfi { namespace infinity { namespace detail

@@ -19,6 +19,10 @@ elseif (${STM32_MCU} STREQUAL "STM32C0")
    set(STM32_DRIVER_SOURCES
       stm32/src/stm32c0/stm32c0xx_ll_utils.c
    )
+elseif (${STM32_MCU} STREQUAL "STM32G0")
+   set(STM32_DRIVER_SOURCES
+      stm32/src/stm32g0/stm32g0xx_ll_utils.c
+   )
 endif()
 
 set(STM32_INF_SOURCES

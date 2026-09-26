@@ -30,6 +30,10 @@
 # include <system_stm32c0xx.h>
 # include <stm32c0xx_ll_utils.h>
 # include <stm32c0xx_hal.h>
+#elif defined(STM32G0)
+# include <system_stm32g0xx.h>
+# include <stm32g0xx_ll_utils.h>
+# include <stm32g0xx_hal.h>
 #endif
 
 #endif

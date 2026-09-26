@@ -17,6 +17,7 @@ Layout
   src/<family>/   one subdirectory per supported STM32 family:
       stm32c0/
       stm32f4/
+      stm32g0/
       stm32h7/
 
 Each family subdirectory contains that family's sources (the LL utility units
