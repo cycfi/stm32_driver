@@ -28,6 +28,13 @@ namespace cycfi { namespace infinity
 
    // The MCU core clock (Hz), sampled at startup.
    extern std::uint32_t const clock_speed;
+
+   // Core clock cycles: the Cortex-M DWT cycle counter, free running and
+   // 32-bit (it wraps; use differences). start_cycles() enables it once.
+   // Cortex-M3 and up only: the M0+ (G0, C0) has no cycle counter, and
+   // these are not defined there.
+   void start_cycles();
+   std::uint32_t cycles();
 }}
 
 #endif
